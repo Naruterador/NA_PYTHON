@@ -1,6 +1,6 @@
 ###使用multiprocessing.Process创建新进程
 	> 虽然使用os.fork()方法可以启动多个进程，但这种方法显然不适合Windows，而Python是跨平台的语言
-	  所以Python绝对不能仅仅限于Windows系统，因此Python也提供了其他方式在Windows下创建进程。
+	  所以Python绝对不能仅仅限于Linux系统，因此Python也提供了其他方式在Windows下创建进程。
 	> Python在multiprocessing模块下提供了Process来创建新进程。与Thread类似的是，使用Process
 	  创建新进程也有两种方式。
 		> 执行函数作为target,创建Process对象即可创建新进程

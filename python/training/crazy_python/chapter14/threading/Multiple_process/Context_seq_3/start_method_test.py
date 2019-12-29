@@ -4,8 +4,8 @@
 
 
 '''
-multiprocessing模块提供了一个set_start_method()函数，该函数可用于设置启动进程的方式---
-必须将这行设置代码放在所有于进程相关的代码之前。
+multiprocessing模块提供了一个set_start_method()函数，该函数可用于设置启动进程的
+方式---必须将这行设置代码放在所有于进程相关的代码之前。
 '''
 
 
