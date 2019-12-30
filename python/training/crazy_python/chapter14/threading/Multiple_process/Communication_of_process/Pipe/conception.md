@@ -4,7 +4,7 @@
 	  一个管道，该函数会返回两个PipeConnection对象，代表管道的两个连接端
 	  (一个管道有两个连接端，分别用于连接通信的两个进程)。
 
-	>PipeConnection对象包含如下常用方法。
+	> PipeConnection对象包含如下常用方法。
 		> send(obj):发送一个obj给管道的另外一端，另一端使用recv()方法接收
 		  需要说明的是，该obj必须是pickable的(Python序列化机制)，如果该对象
 		  序列化之后超过了32MB,则可能会引发ValueError异常。
