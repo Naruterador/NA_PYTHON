@@ -7,8 +7,8 @@
     真正访问底层的文件路径，因此它提供了属性和方法来访问底层的文件系统。
 
 
-    关于Path的大量属性和方法可以参考:
-    https://docs.python.org/3/library/pathlib.html
+    关于Path的大量属性和方法可以参考:[1]
+    [1]:https://docs.python.org/3/library/pathlib.html
 
     Path同样提供了两个子类:PosixPath和WindowsPath,其中前者代表UNIX风格的路径
     后者代表Windows风格的路径。

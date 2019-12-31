@@ -14,13 +14,10 @@ PurePath会将它们拼接成一个字符串。
 
 '''
 
-
-
-
 from pathlib import *
 
 #创建PurePath,实际上使用PureWindowsPath
-
+#PurePath,根据实际运行的系统来确定输出的风格
 
 pp = PurePath('setup.py')
 print(type(pp))  #<class 'pathlib.PurePosixPath'>
@@ -89,4 +86,5 @@ print(pp) #foo/bar
 pp = PurePath('foo/.bar')
 print(pp) #foo/.bar
 pp = PurePath('foo/..bar')
+
 print(pp) #foo/..bar(相当于找和foo同一级的bar路经)
