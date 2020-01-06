@@ -31,10 +31,10 @@ with FkResource('孙悟空') as dr:
     print('[with代码块]没有异常')
 print('___________________________')
 
-with FkResource('白骨精'):
-    print('[with代码块]异常之前代码')
-    raise Exception
-    print('[with代码块] ~~~~~~~异常之后的代码')
+#with FkResource('白骨精'):
+#    print('[with代码块]异常之前代码')
+#    raise Exception
+#    print('[with代码块] ~~~~~~~异常之后的代码')
 
 
 '''

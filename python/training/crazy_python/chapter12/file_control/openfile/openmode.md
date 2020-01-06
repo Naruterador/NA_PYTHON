@@ -1,6 +1,6 @@
 #文件的打开模式
 
-> open()函数支持的文件打开模式如下:
+> open()函数支持的文件打开模式如下:<br>
    >  r：只读模式<br>
    >  w: 写模式<br>
    >  a: 追加模式<br>
@@ -16,7 +16,7 @@
             根据上面介绍不难看出，如果希望调用open函数打开指定文件后，该文件中的内容能被保存，那么程序就不能使用w
             或者w+模式。
     '''
-![1.PNG](/Users/kingdom/Documents/githubcode/python/training/crazy_python/chapter12/file_control/openfile/1.PNG)
+![1.PNG](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter12/file_control/openfile/1.PNG)
 
 
 >   需要指出的是，如果程序使用r或者r+模式打开文件，则要求被打开的文件本身是存在的。也就是说，使用r或者r+模式都不能
