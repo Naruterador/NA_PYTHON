@@ -35,9 +35,11 @@ class Fibs(object):
 		if self.__len == 0:
 			raise StopIteration
 		#完成数学计算
-		self.first ,self.sec = self.sec,self.first + self.sec  
-		 #这种写法，Python先计算等号的右边(self.first+self.sec)赋值给self.sec
-		 #再将self.sec赋值给self.first
+		self.first ,self.sec = self.sec,self.first + self.sec 
+		''' 
+		 这种写法，Python先计算等号的右边(self.first+self.sec)赋值给self.sec
+		 再将self.sec赋值给self.first
+		'''
 
 		#数列长度减1
 		self.__len = self.__len - 1

@@ -11,7 +11,6 @@ class Item(object):
 		self.name = name
 		self.price = price
 
-
 im = Item('鼠标',29.8)
 print(im)
 print(im.__repr__())
