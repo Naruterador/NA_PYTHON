@@ -1,8 +1,6 @@
 #coding = utf - 8
 
 
-
-
 '''
 与权限相关的函数如下
 
@@ -16,5 +14,16 @@ os.access(path,mode):检查path对应的文件或目录是否具有指定权限�
 '''
 
 
-#例如如下程序:
+import os,sys
 
+#判断当前目录的权限
+ret = os.access('.',os.F_OK|os.R_OK|os.W_OK|os.X_OK)
+print("os.F_OK|os.R_OK|os.X_OK - 返回值:",ret)
+#判断os.access_test.py文件的权限
+print("os.F_OK|os.R_OK|OS.W_OK - 返回值:",ret)
+
+
+
+'''
+上面程序判断当前目录的权限和os.access_test.py文件的权限，这里特意将os.access_test.py文件设为只读的。
+'''
