@@ -17,6 +17,8 @@ f.close()
 如果有需要，程序也可以使用list()函数将文件转换成list列表，就像文件对象的
 readlines()方法的返回值一样。
 '''
+
+
 #代码如下
 #将文件对象转换为list列表
 #print(list(codecs.open("for_file.py",'r','utf-8',buffering=True)))
