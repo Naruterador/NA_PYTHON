@@ -26,8 +26,9 @@ def main():
 		#此时即使程序出现异常，也不会传播给main函数
 		mtd(3)
 	except Exception as e:
-		print("程序出现异常!")
-	mtd(3)
+		#print("程序出现异常!")
+                print(e)
+#	mtd(3)
 
 def mtd(a):
 	if a > 0:

@@ -12,10 +12,10 @@ try:
 	a = int(sys.argv[1])
 	b = int(sys.argv[2])
 	c = a / b
-	print("输入的两个数相除的结果是:")
+	print("输入的两个数相除的结果是: %d" % c)
 except(IndexError,ValueError,ArithmeticError):
 	print("程序发生了数组越界、数字格式、算术异常之一")
 except Exception:
 	print("未知异常")
 
-	
+
