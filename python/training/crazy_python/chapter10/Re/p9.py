@@ -10,14 +10,12 @@ re模块中的Match对象(其具体类型为_sre.SRE_Match)则是match()、searc
 _sre.SRE_Mathch包含了如下方法或属性:
 
 match.group([group1,...]):获取该匹配对象中指定组所匹配的字符串
-match.__getitem__(g):这是match.group(g)的简化写法。由于match对象提供
-					 了__getitem__()方法，因此程序可使用match[g]来代替match.group(g)。
+match.__getitem__(g):这是match.group(g)的简化写法。由于match对象提供了__getitem__()方法，因此程序可使用match[g]来代替match.group(g)。
 match.groups(default=None):返回match中所有组所匹配的字符串组成的元组
 match.groupdict(default=None):返回match对象中所有组所匹配的字符串组成的字典
 match.start([group]):获取该匹配对象中指定组所匹配的字符串的开始位置
 match.end([end]):获取该匹配对象中指定组所匹配的字符串的结束位置
-match.span([group]):获取该匹配对象中指定组所匹配的字符串的开始位置和结束位置，该方法相当于
-					同时返回了start()和end()
+match.span([group]):获取该匹配对象中指定组所匹配的字符串的开始位置和结束位置，该方法相当于同时返回了start()和end()
 
 上面这些方法都涉及了组的概念，组是正则表达式中很常见的一个东西:用圆括号将多个
 表达式括起来组成。如果正则表达式中没有圆括号，那么整个表达式就属于一个默认组。
