@@ -7,8 +7,6 @@
 
 from tkinter import *
 
-
-
 #定义继承Frame的Application类
 class Application(Frame):
 
@@ -30,8 +28,8 @@ class Application(Frame):
 		w.pack()
 		#创建Buttion对象，第一个参数指定将该Button放入root内
 		okButton = Button(self,text = "确定")
-		okButton['background'] = 'yellow'
-		#okButton.configure(background='yellow')#与上面的代码相同
+		#okButton['background'] = 'yellow'
+		okButton.configure(background='yellow')#与上面的代码相同
 		okButton.pack()
 
 #创建Application对象
