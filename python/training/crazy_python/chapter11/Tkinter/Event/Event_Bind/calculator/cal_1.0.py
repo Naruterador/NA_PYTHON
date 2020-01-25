@@ -1,9 +1,12 @@
 #coding = utf - 8
 
+'''
+第一版基本功能实现，用于测试BUG，会在后期慢慢修复
+'''
 
 from tkinter import *
 import math
-import sys
+
 
 class calculator:
 
@@ -11,9 +14,9 @@ class calculator:
 		self.master = master
 		self.initWidgets()
 		self.p = StringVar()
-		self.a = 0
-		self.b = 0
-		self.c = 0
+		self.a = ''
+		self.b = ''
+		self.c = ''
 		self.result = 0
 		self.flag = True
 		self.operator = ''
@@ -93,10 +96,9 @@ class calculator:
 			elif event.widget['text'] == '*':
 				self.operator = '*'
 			elif event.widget['text'] == '÷':
-				self.operator = '/'
+				self.operator = '÷'
 			elif event.widget['text'] == '%':
 				self.operator = '%'
-
 			
 			self.a = self.e.get()
 			self.flag = False
@@ -109,6 +111,7 @@ class calculator:
 			if self.flag:
 				self.c = self.b
 				self.flag = False 
+
 			self.e.delete(0,END)
 
 			if self.operator == '':
@@ -130,14 +133,14 @@ class calculator:
 					self.result = float(self.a) * float(self.b)
 			elif self.operator == '÷':
 				try:
-					self.result = int(self.a) / int(self.b)
+					self.result = int(self.a) // int(self.b)
 				except:
 					self.result = float(self.a) / float(self.b)
 			elif self.operator == '%':
 				try:
 					self.result = int(self.a) % int(self.b)
 				except:
-					self.result = float(self.a) / float(self.b)
+					self.result = float(self.a) % float(self.b)
 
 
 			self.e.insert(END,self.result)
@@ -147,6 +150,7 @@ class calculator:
 		if event.widget['text'] == 'AC':
 			self.a = ''
 			self.b = ''
+			self.operator = ''
 			self.result = 0
 			self.e.delete(0,END)
 			self.flag = True
