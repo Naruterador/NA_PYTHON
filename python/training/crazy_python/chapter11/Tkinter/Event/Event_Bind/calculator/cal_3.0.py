@@ -16,14 +16,12 @@ class calculator:
 	def __init__(self,master):
 		self.master = master
 		self.initWidgets()
-		self.p = StringVar()
-		self.a = ''
-		self.b = ''
-		self.c = ''
-		self.result = ''
-		self.flag = True
-		self.flag1 = False
-		self.operator = ''
+		self.a = ''         #第一个运算符
+		self.b = ''         #第二个运算符 
+		self.c = ''         #用于交换的临时变量
+		self.result = ''    #运算结果
+		self.flag = True    #旗标用于控制两次不同的运算数
+		self.operator = ''  
 
 
 	def initWidgets(self):
@@ -60,21 +58,24 @@ class calculator:
 				self.buttonlist = Button(p,text=bottonnames[i],font=('Vendana',20),width = 6)
 				self.buttonlist.grid(row = i // 4,column = i % 4)
 				self.buttonlist.bind('<Button-1>',self.keyfunction)
-	
+
+	#设置每个键位的功能
 	def keyfunction(self,event):
 		numbers = ['7','8','9','4','5','6','1','2','3','0','.']
 		operators = ['+','-','*','÷','%']
 
 		if self.flag:
+			#第一个运算数
 			if event.widget['text'] in numbers:
 				self.e.insert(END,event.widget['text'])
 		else:
+			#第二个运算数
 			if event.widget['text'] in numbers:
 				self.e.delete(0,END)
 				self.e.insert(END,event.widget['text'])
 				self.flag = True
 
-
+        #正负数切换
 		if event.widget['text'] == '+/-':
 			if self.e.get():
 				try:
@@ -88,7 +89,7 @@ class calculator:
 					self.e.delete(0,END)
 					self.e.insert(END,change)
 
-
+        #为运算符绑定功能
 		if event.widget['text'] in operators:
 			
 			if event.widget['text'] == '+':
@@ -107,7 +108,7 @@ class calculator:
 			self.result = ''
 		
 
-
+		#计算结果
 		if event.widget['text'] == '=':
 
 			self.b = self.e.get()
@@ -127,6 +128,7 @@ class calculator:
 					self.result = float(self.a) + float(self.b)
 			elif self.operator == '-':
 			    try:
+			    	#如果做累减，就交换2个运算数
 			    	if self.result != '':
 			    		self.c = self.a
 			    		self.a = self.b
@@ -144,6 +146,7 @@ class calculator:
 				except:
 					self.result = float(self.a) * float(self.b)
 			elif self.operator == '÷':
+				#如果做累除，也不能更换位置
 				try:
 					if self.result != '':
 						self.c = self.a
@@ -159,8 +162,16 @@ class calculator:
 					self.result = float(self.a) / float(self.b)
 			elif self.operator == '%':
 				try:
+					if self.result != '':
+						self.c = self.a
+						self.a = self.b
+						self.b = self.c
 					self.result = int(self.a) % int(self.b)
 				except:
+					if self.result != '':
+						self.c = self.a
+						self.a = self.b
+						self.b = self.c
 					self.result = float(self.a) % float(self.b)
 			
 			if self.result != '':
@@ -170,7 +181,7 @@ class calculator:
 
 			self.a = self.c
 
-
+		#重置所有的值
 		if event.widget['text'] == 'AC':
 			self.a = ''
 			self.b = ''
