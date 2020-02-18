@@ -16,7 +16,7 @@ class App:
 
 	def initWidgets(self):
 		lb = Label(self.master,width=40,height=30)
-		lb.config(bg='lightgreen',font=('Times',20))
+		lb.configure(bg='lightgreen',font=('Times',20))
 		#为了鼠标移动事件绑定事件处理办法
 		lb.bind('<Motion>',self.motion)          #1代码
 		#为按住左键时，鼠标移动事件绑定事件处理方法
