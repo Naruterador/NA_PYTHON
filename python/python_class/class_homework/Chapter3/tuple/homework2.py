@@ -1,11 +1,9 @@
-st = []
+st=[]
 
-st.append({"name": "a", "sex": "male"})
+st.append({"name":"a","sex":"male"})
 
-st.append({"name": "b", "sex": "female"})
-
-st[1]["age"] = 23
+st.append({"name":"b","sex":"female"})
 
 for s in st:
-    print(s["name"], s["sex"], s["age"])
 
+    print(s["name"],s["sex"])
