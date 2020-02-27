@@ -1,7 +1,5 @@
-st=("a","b")
+def f(a,**kargs):
+	print(a,kargs)
+f(1,b=2,c=3)
 
-st[0]="c"
-
-print(st)
-
-程序结果是：
+ 

@@ -1,5 +1,4 @@
 def f(a,**kargs):
+	print(kargs,a)
 
-    print(a,kargs)
-
-f(1,b=2,c=3)
+f(b=2,c=3,1)

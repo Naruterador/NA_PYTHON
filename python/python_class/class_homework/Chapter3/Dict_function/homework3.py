@@ -1,5 +1,5 @@
-def f(a,**kargs):
+def f(a,*args,**kargs):
 
-    print(kargs,a)
+    print(a,args,kargs)
 
-f(b=2,c=3,1)
+f(1,2,b=2,c=3)
