@@ -16,5 +16,5 @@ class Product(object):
 class Mouse(Item,Product):
 	pass
 
-i = Item()
+i = Mouse()
 i.info()

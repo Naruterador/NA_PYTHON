@@ -20,8 +20,10 @@ def test():
 x = 5
 y = 20
 
-test()
+#test()
 
-print(globals())
+
+
+#print(globals())
 print(locals())
-print(globals()['x'])
+#print(globals()['x'])

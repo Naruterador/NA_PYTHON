@@ -16,14 +16,15 @@ Path还提供了read_bytes()和read_text(encoding=None,errors=None)方法，分�
 
 from pathlib import *
 
-p = Path('a_test.txt')
+p = Path('./a_test.txt')
 #指定以GBK字符集写入到文本内
-result = p.write_text('''啊啊啊啊啊啊啊啊啊啊啊啊啊
-	啊啊啊啊啊啊啊
-	啊啊啊啊啊啊''',encoding='GBK')   #1代码处
+result = p.write_text('''aaaaaa
+cccc
+dddd
+eeee
+''',encoding='GBK')   #1代码处
 #返回输出的字符数
 print(result)
-
 
 #指定以GBK字符集读取文本内容
 content = p.read_text(encoding='GBK') #2代码处

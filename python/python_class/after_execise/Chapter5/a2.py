@@ -1,0 +1,1 @@
+2.定义一个计算机类MyComputer，它包含CPU类型(String类型）、RAM内存大小(Integer类型)、HD硬盘大小(Integer类型)，设计它的构造函数，并设计一个显示函数，建立一个MyComputer对象并调用该显示函数显示。
