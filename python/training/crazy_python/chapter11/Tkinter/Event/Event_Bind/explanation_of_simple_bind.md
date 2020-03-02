@@ -16,5 +16,5 @@
   右键、滚轮等。
 
 > 下图展示了Tkinter支持的各种鼠标、键盘事件。
-![1.jpg](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter11/Tkinter/Event/Event_Bind/1.jpg)
-![1.jpg](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter11/Tkinter/Event/Event_Bind/2.jpg)
+![1.jpg](./1.jpg)
+![2.jpg](./2.jpg)

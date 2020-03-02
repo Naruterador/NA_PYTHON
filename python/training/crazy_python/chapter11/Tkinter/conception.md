@@ -2,7 +2,7 @@
 
 > 如果从程序员的角度来看一个窗口，这个窗口不是一个整体，而是由多个部分组合而成的<br>
 
-![1.jpg](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter11/Tkinter/1.jpg)
+![1.jpg](./1.jpg)
 
 
 > 从上图中可以看出，任何窗口都可以被分解成一个空的容器，容器里装了大量的基本组件，通过
@@ -26,7 +26,7 @@
   因此我们先通过类图来了解各GUI组件，以及它们之间的关系。
 
 
-![2.jpg](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter11/Tkinter/2.jpg)
+![2.jpg](./2.jpg)
 
 > Tkinter的GUI组件之间的继承关系如上图
   从上图中可以看出，Tkinter的GUI组件有两个根父类，它们都直接继承了object类
@@ -48,6 +48,6 @@
   布局管理器，它们负责管理所有包含的组件的大小的位置
 
 
-![3.jpg](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/chapter11/Tkinter/3.jpg)
+![3.jpg](./3.jpg)
 
 > 上表简单介绍了各GUI组件的功能。
