@@ -1,13 +1,162 @@
 '''
-项目目标
-这个项目是通过面向对象的方法设计教材类Book，包含一个教材ISBN、名称(Title)、作者(Author)、出版社(Publisher)，然后设计教材记录管理类BookList来管理一组教材记录。
-程序运行后显示
-">"
-的提示符号，在
-">"
-后面可以输入show、insert、update、delete等命令实现记录的显示、插入、修改、删除等功能，执行一个命令后继续显示
-">"
-提示符号，如果输入exit就退出系统，输入的命令不正确时会提示正确的输入命令，操作过程类似第4章中的学生记录管理项目。
-
-在程序启动时会读取books.txt的教程记录，在程序结束时会把记录存储在books.txt文件中。
+booklist = [{'ISBN':9787806018590,'Title':'人性的优点人性的弱点全集','Author':'袭村野','Publisher':'辽宁画报出版社'},\
+{'ISBN':9787805018591,'Title':'aaaaaaaaa','Author':'sdf','Publisher':'ggggggg'},\
+{'ISBN':9787803716561,'Title':'ccccc','Author':'gba','Publisher':'ffffff'}]
 '''
+
+import codecs
+import sys
+
+
+class BookList(object):
+
+    def __init__(self):
+        self.__booklist = []
+        temp_dict = {}
+        with codecs.open("books.txt", "r+", encoding="utf - 8") as file:
+            for i in file.readlines():
+                t = i.split(' ')
+                temp_dict['ISBN'] = int(t[0].strip('\n'))
+                temp_dict['Title'] = t[1].strip('\n')
+                temp_dict['Author'] = t[2].strip('\n')
+                temp_dict['Publisher'] = t[3].strip('\n')
+                self.__booklist.append(temp_dict)
+                temp_dict = {}
+
+    #显示当前所有书籍
+    def __show(self):
+        with codecs.open("books.txt", "r+", encoding="utf - 8") as file:
+            for i in file.readlines():
+                print(i)
+    #插入一本书
+    def __insert(self):
+        temp_dict = {}
+
+        isbnNum = input("ISBN:")
+        if 13 != len(isbnNum):
+            print("Wrong ISBN code!")
+            return False
+        num = self.__searchIsbn(isbnNum)
+        if num >= 0:
+            print("duplicate code!")
+            return False
+        temp_dict["ISBN"] = isbnNum
+
+        titleName = input("Title:")
+        if titleName != "":
+            temp_dict['Title'] = titleName
+        else:
+            return False
+
+        authorName = input("Author:")
+        if authorName != "":
+            temp_dict["Author"] = authorName
+        else:
+            return False
+
+        publisherName = input("Publisher:")
+        if publisherName != "":
+            temp_dict["Publisher"] = publisherName
+        else:
+            return False
+
+        self.__booklist.append(temp_dict)
+
+        with codecs.open("books.txt", 'a+', encoding='utf - 8') as f:
+            f.write("\r")
+            for key, value in temp_dict.items():
+                f.write(str(value) + ' ')
+
+    #根据ISBN编号或者书名修改书的各项属性
+    def __update(self):
+        searchSource = input("Which property you wanna to choose as the condition of modifying item? (input:isbn/title):")
+        if "isbn" == searchSource:
+            isbnnum = input("ISBN:")
+            isbnnumlen = len(isbnnum)
+            num = self.__searchIsbn(isbnnum)
+            if num >= 0:
+                ts = input("Modify ISBN:")
+                if ts != "":
+                    if 13 != len(ts):
+                        print("Wrong ISBN code!")
+                        return False
+                    else:
+                        self.__booklist[num]['ISBN'] = ts
+                else:
+                    pass
+
+                tn = input("Modify title:")
+                if tn != "":
+                    self.__booklist[num]['Title'] = tn
+                else:
+                    pass
+                
+                ta = input("Modify Author:")
+                if ta != "":
+                    self.__booklist[num]['Author'] = ta
+                else:
+                    pass
+                
+                tp = input("Modify Publisher:")
+                if tp != "":
+                    self.__booklist[num]['Publisher'] = tp
+                else:
+                    pass
+
+                with codecs.open("books.txt", 'w+', encoding='utf - 8') as f:
+                    for i in range(len(self.__booklist)):
+                        for key,value in self.__booklist[i].items():
+                            f.write(str(value) + '  ')
+                        f.write('\r')
+
+        elif "title" == searchSource:
+            print('Developing soon!')
+            return False
+        else:
+            print("Error input!")
+            return False
+
+    #根据ISBN编号删除书
+    def __delete(self):
+        isbnDnum = input("Input ISBN num that you wanna delete:")
+        num = self.__searchIsbn(isbnDnum)
+        if num >= 0:
+            del self.__booklist[num]
+
+            with codecs.open("books.txt", 'w+', encoding='utf - 8') as f:
+                for i in range(len(self.__booklist)):
+                    for key,value in self.__booklist[i].items():
+                        f.write(str(value) + '  ')
+                    f.write('\r')
+        else:
+            print("Can not find this book!")
+            return False
+            
+    #根据ISBN编号查找一本书
+    def __searchIsbn(self, ISBN):
+        for i in range(len(self.__booklist)):
+            if int(ISBN) == self.__booklist[i]['ISBN']:
+                return i
+        return -1
+
+    def controlPanel(self):
+        while True:
+            i = input(">")
+            if "show" == i:
+                self.__show()
+            elif "insert" == i:
+                if not self.__insert():
+                    continue
+            elif "update" == i:
+                if not self.__update():
+                    continue
+            elif "delete" == i:
+                if not self.__delete():
+                    continue
+            elif "exit" == i:
+                sys.exit(0)
+            else:
+                print("Please input right command!")
+
+b1 = BookList()
+b1.controlPanel()
