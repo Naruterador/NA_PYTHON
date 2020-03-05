@@ -4,7 +4,7 @@
 定义。
 
 
-为了使用metaclass动态修改类定义，重续需要先定义metaclass，metaclass应继承type类，并重写__new__()方法
+为了使用metaclass动态修改类定义，需要先定义metaclass，metaclass应继承type类，并重写__new__()方法
 '''
 
 

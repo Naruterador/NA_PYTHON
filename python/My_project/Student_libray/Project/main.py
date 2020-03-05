@@ -1,4 +1,4 @@
-import connectdatabase
+import singleton_pattern
 import sys
 
 class Student(object):
@@ -8,7 +8,7 @@ class Student(object):
         self.age = 0
         self.identity_id = 0
         #conncect to database
-        self.dc = connectdatabase.databaseconnect()
+        self.dc = singleton_pattern.databaseC()
         self.c = self.dc.cursor()
     
     
@@ -41,14 +41,48 @@ class Student(object):
         self.c.execute('insert into student_tb values(null,%s,%s,%s,%s)',(self.name,
                         self.age,self.age,self.identity_id))
         
+        self.dc.conn.commit()
+        
 
 
     def __update(self):
-        pass
+        iddnum = input('Input identity_id you wanna modify:')
+        if not self.__checkidd(iddnum):
+            return False
+        if not self.__search(self.identity_id):
+            print('Can not find this record in the database!')
+            return False
+        uname = input('Name:')
+        if not self.__checkname(uname):
+            return False
+        
+        ugender = input('Gender:')
+        if not self.__checkgender(ugender):
+            return False
+        
+        uage = input('Age:')
+        if not self.__checkage(uage):
+            return False
+
+        self.c.execute('update student_tb set name=%s where idd=%s',(self.name,self.identity_id))
+        self.c.execute('update student_tb set Gender=%s where idd=%s',(self.gender,self.identity_id))
+        self.c.execute('update student_tb set age=%s where idd=%s',(self.age,self.identity_id))
+
+        self.dc.conn.commit()
+
 
     def __delete(self):
-        pass
-
+        iddnum = input('Input identity_id you wanna delete:')
+        if not self.__checkidd(iddnum):
+            return False
+        if not self.__search(self.identity_id):
+            print('Can not find this record in the database!')
+            return False
+        
+        self.c.execute('delete from student_tb where idd = %s',(self.identity_id,))
+        self.dc.conn.commit()
+        
+        
     def __checkname(self,sname):
         if sname != "" and not sname.isdigit():
             self.name = sname
@@ -107,18 +141,16 @@ class Student(object):
                 if not self.__insert():
                     continue
             elif 'update' == s1:
-                self.__update()
+                if not self.__update():
+                    continue
             elif 'delete' == s1:
                 self.__delete()
             elif 'exit' == s1:
+                self.c.close()
+                self.dc.conn.close()
                 sys.exit(0)
             else:
                 print('wrong input!')
-            
-    def __del__(self):
-        self.c.close()
-        self.dc.conn.close()
-
 
 
 s = Student()
