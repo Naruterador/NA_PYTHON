@@ -8,14 +8,13 @@ class databaseC(object):
     
     def __new__(cls,*args,**kwargs):
         if cls.instance == None:
-            cls.instance = super(databaseC,cls).__new__(cls)
+            cls.instance = super().__new__(cls)
         
         return cls.instance
-    
+
     def __init__(self):
         self.conn = mysql.connector.connect(user='root',password='123456',host='192.168.3.107',database='python',use_unicode=True)
     
     def cursor(self):
         c = self.conn.cursor()
         return c
-

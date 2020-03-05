@@ -1,9 +1,3 @@
-'''
-booklist = [{'ISBN':9787806018590,'Title':'人性的优点人性的弱点全集','Author':'袭村野','Publisher':'辽宁画报出版社'},\
-{'ISBN':9787805018591,'Title':'aaaaaaaaa','Author':'sdf','Publisher':'ggggggg'},\
-{'ISBN':9787803716561,'Title':'ccccc','Author':'gba','Publisher':'ffffff'}]
-'''
-
 import codecs
 import sys
 
