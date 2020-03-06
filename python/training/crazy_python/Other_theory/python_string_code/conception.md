@@ -2,12 +2,12 @@
 > 一、Python常见字符编码<br>
 
 字符编码的常用种类介绍<br>
-![1.png](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/Other_theory/python_string_code/1.png)
+![1.png](./1.png)
 
 第一种：ASCII码
 ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。如下图所示：
 
-![2.png](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/Other_theory/python_string_code/2.png)
+![2.png](./2.png)
 
 由于计算机是美国人发明的，因此，最早只有127个字母被编码到计算机里，也就是大小写英文字母、数字和一些符号，这个编码表被称为ASCII编码，比如大写字母 A的编码是65，小写字母 a的编码是97。后128个称为扩展ASCII码。
 在这里，每一位0或者1所占的空间单位为bit(比特)，这是计算机中最小的表示单位，每8个bit组成一个字符，这是计算机中最小的存储单位。
@@ -36,12 +36,12 @@ ASCII编码是1个字节，而Unicode编码通常是2个字节。
 
 第四种：UTF-8
 基于节约的原则，出现了把Unicode编码转化为“可变长编码”的UTF-8编码。UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间了。如下所示：
-![3.png](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/Other_theory/python_string_code/3.png)
+![3.png](./3.png)
 从上面的表格还可以发现，UTF-8编码有一个额外的好处，就是ASCII编码实际上可以被看成是UTF-8编码的一部分，所以，大量只支持ASCII编码的历史遗留软件可以在UTF-8编码下继续工作。
 我们总结一下现在计算机系统通用的字符编码工作方式：
 在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。
 用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件。如下图：
-![4.png](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/Other_theory/python_string_code/4.png)
+![4.png](./4.png)
 
 二、Python常见字符编码间的转换
 
@@ -95,7 +95,7 @@ Python2并不会自动的把文件编码转为unicode存在内存里。
 
 规则如下：
 
-![5.png](/Users/kingdom/Documents/githubcode/NA_PYTHON/python/training/crazy_python/Other_theory/python_string_code/5.png)
+![5.png](./5.png)
 
 （四）Python bytes 类型
 
