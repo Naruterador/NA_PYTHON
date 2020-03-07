@@ -38,10 +38,13 @@ def test():
 	fis = None
 	try:
 		fis = open('a.txt')
+		return
 	except OSError as e:
 		print(e.strerror)
+
 	#return
     #os.exit(1)
+
 	finally:
 		if fis is not None:
 			try:

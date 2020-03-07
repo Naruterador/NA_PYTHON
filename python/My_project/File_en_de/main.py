@@ -65,27 +65,25 @@ class FileEnDe(object):
     
     #文件内容检查和填充函数
     def __contentcheck(self, filename):
-        try:
-            with codecs.open(filename, 'r+', encoding='utf-8') as f:
-                content = f.read()
-                self.orcontent = content
-            content = bytes(content, encoding='utf-8')
-            lengthdata = len(content)
-            if (len(content) % 8) != 0:
-                # 需要填充的字段数量
-                pad = (((lengthdata // 8) + 1) * 8 - lengthdata) * chr(0)
-                print(pad)
-                pad = bytes(pad, encoding='utf-8')
-                content = content + pad
-                self.content = content
-                self.count = len(self.content)
-                return True
-            else:
-                self.content = content
-                self.count = len(self.content)
-                return True
-        except Exception as e:
-            return False
+        with codecs.open(filename, 'r+', encoding='utf-8') as f:
+            content = f.read()
+            self.orcontent = content
+        content = bytes(content, encoding='utf-8')
+        lengthdata = len(content)
+        if (len(content) % 8) != 0:
+            # 需要填充的字段数量
+            pad = (((lengthdata // 8) + 1) * 8 - lengthdata) * chr(0)
+            print(pad)
+            pad = bytes(pad, encoding='utf-8')
+            content = content + pad
+            self.content = content
+            self.count = len(self.content)
+            return True
+        else:
+            self.content = content
+            self.count = len(self.content)
+            return True
+ 
     
     #加密数据方法
     def __encrypted_data(self,key,filename):
@@ -148,7 +146,7 @@ class FileEnDe(object):
                 tempde2 = []
 
         
-            with codecs.open('books.txt','w+',encoding='utf-8') as f1:
+            with codecs.open(filename,'w+',encoding='utf-8') as f1:
                 for i,j in zip(templist1,tempde1):
                     for k in i:
                         f1.write(k + ' ')
@@ -159,7 +157,7 @@ class FileEnDe(object):
                     f1.write('\r')
 
     #解密加密后文件的方法
-    def __decrypt_data(self,key):
+    def __decrypt_data(self,key,filename):
         self.__orkeycheck(key)
         self.__keyhash(self.orkey)
         
@@ -173,19 +171,16 @@ class FileEnDe(object):
         des = DES.new(self.orkey,DES.MODE_ECB)
         data = des.decrypt(final_de_data)   
 
-        with codecs.open('books.txt','w+',encoding='utf-8') as f2:
+        with codecs.open(filename,'w+',encoding='utf-8') as f2:
             f2.write(self.orcontent)
             
     def __show(self, filename):
-        try:
-            with codecs.open(filename, 'r+', encoding='utf-8') as f:
-                content = f.readlines()
-                for i in content:
-                    print(i)
-            return True
-        except Exception as e:
-            return False
-
+        with codecs.open(filename, 'r+', encoding='utf-8') as f:
+            content = f.readlines()
+            for i in content:
+                print(i)
+        return True
+       
     def run(self):
         while True:
             s1 = input('>')
@@ -194,11 +189,9 @@ class FileEnDe(object):
                     enterlist1 = s1.split(' ')
                     show = enterlist1[0]
                     filename = enterlist1[1]
+                    self.__show(filename)
                 except Exception as e:
-                    print('Please type the filename!')
-                    continue
-                if not self.__show(filename):
-                    print('can not find this file!')
+                    print('Please type the right filename!')
                     continue
             elif 'encrypt' in s1:
                 try:
@@ -216,7 +209,7 @@ class FileEnDe(object):
                     decrypt = enterlist3[0]
                     filename = enterlist3[1]
                     key = enterlist3[2]
-                    self.__decrypt_data(key)
+                    self.__decrypt_data(key,filename)
                 except Exception as e:
                     print('Wrong input!')
                     continue

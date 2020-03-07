@@ -9,3 +9,12 @@ def max(*args)
 print(max(1,2))
 print(max(1,2,3,4))
 '''
+
+def max(*args):
+    a = args[0]
+    for i in args:
+        if i > a:
+            a = i
+    print(a)
+
+
