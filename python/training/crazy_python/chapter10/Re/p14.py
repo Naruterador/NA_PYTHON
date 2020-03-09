@@ -11,7 +11,9 @@ exp捕获的组没有显示指定组名，因此后面使用\1、\2等方式来�
 （?P=name):引用name命名组所匹配的子串。
 测试代码如下:
 '''
-print(re.search(r'<(?P<tag>\w+)>\w+</(?P=tag)>','<h3>xx</h3>'))
+
+
+print(re.search(r'<(?P<tag>\w+)>\w+</(?P=tag)>','<h1>xx</h1>'))
 #输出:<_sre.SRE_Match object; span=(0, 11), match='<h3>xx</h3>'>
 
 

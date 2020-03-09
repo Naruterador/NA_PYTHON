@@ -84,7 +84,7 @@ class NodeClass:
                 j=node.j
 
 如果(i,j)是可以到达的合理位置，而且目前道路上没有到过这个位置，那么就让这个节点入栈：
-
+</pre>
             if v<4:
 
                 if i>=0 and j>=0 and i<self.m and j<self.n:
@@ -253,7 +253,7 @@ class NodeClass:
 
 
 
-
+<pre>
 4.程序测试
 
 1. 测试结果1
